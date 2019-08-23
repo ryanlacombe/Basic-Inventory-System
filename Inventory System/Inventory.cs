@@ -248,6 +248,7 @@ namespace Inventory_System
                     potionNum = potionNum + buyNum;
                     Console.WriteLine("Current Number of Potions: " + potionNum);
                     gold = gold - (potionPrice * buyNum);
+                    Console.WriteLine("Remaining Gold: " + gold);
                 }
                 else if (gold < potionPrice * buyNum)
                 {

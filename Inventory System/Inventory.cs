@@ -14,6 +14,9 @@ namespace Inventory_System
         float minGold = 0.00f;
         string weaponName = "";
         int maxWeight = 50;
+        int weaponWeight = 0;
+        int baseDefense = 0;
+        string armorName = "";
 
         public void Menu()
         {
@@ -29,13 +32,22 @@ namespace Inventory_System
                 Console.WriteLine("2: Unequip Weapon");
                 Console.WriteLine("3: Add gold");
                 Console.WriteLine("4: Subtract gold");
+                Console.WriteLine("5: Equip Armor");
+                Console.WriteLine("6: Unequip Armor");
 
                 //Grab input
                 choice = Console.ReadLine();
                 Console.WriteLine("");
                 if (choice == "1")
                 {
-                    EquipWeapon();
+                    if (weaponWeight < maxWeight)
+                    {
+                        EquipWeapon();
+                    }
+                    else if (weaponWeight > maxWeight)
+                    {
+                        Console.WriteLine("Too much weight! Unequip something before proceeding!");
+                    }
                 }
                 else if (choice == "2" && weaponName != "Fists")
                 {
@@ -61,6 +73,14 @@ namespace Inventory_System
                         Console.WriteLine("Invalid operation.");
                     }
                 }
+                else if (choice == "5")
+                {
+                    EquipArmor();
+                }
+                else if (choice == "6")
+                {
+                    UnEquipArmor();
+                }
             }
         }
 
@@ -68,7 +88,6 @@ namespace Inventory_System
         {
             string weaponChoice = "";
             int weaponDamage = 0;
-            int weaponWeight = 0;
 
             while (weaponChoice != "0" && weaponWeight <= maxWeight)
             {
@@ -133,6 +152,20 @@ namespace Inventory_System
             Console.WriteLine("Lost " + amount + " gold!");
             gold -= amount;
             Console.WriteLine("Gold: " + gold);
+        }
+        public void EquipArmor()
+        {
+            string armorChoice = "";
+            int armorDefense = 0;
+            
+            //Sub Menu Display
+
+            //Get Sub Menu Input
+        }
+        public void UnEquipArmor()
+        {
+            Console.WriteLine("Unequipped " + armorName + "!");
+            Console.WriteLine("Defense: " + baseDefense);
         }
     }
 }

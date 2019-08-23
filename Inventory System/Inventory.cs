@@ -240,10 +240,19 @@ namespace Inventory_System
         {
             if (gold >= potionPrice)
             {
-                Console.WriteLine("You buy a potion!");
-                potionNum++;
-                Console.WriteLine("Current Number of Potions: " + potionNum);
-                gold = gold - potionPrice;
+                Console.WriteLine("How many potions will you buy?");
+                int buyNum = Convert.ToInt32(Console.ReadLine());
+                if (gold >= potionPrice * buyNum)
+                {
+                    Console.WriteLine("You buy " + buyNum + " potions.");
+                    potionNum = potionNum + buyNum;
+                    Console.WriteLine("Current Number of Potions: " + potionNum);
+                    gold = gold - (potionPrice * buyNum);
+                }
+                else if (gold < potionPrice * buyNum)
+                {
+                    Console.WriteLine("You don't have enough gold to buy that many potions.");
+                }
             }
             else if (gold < potionPrice)
             {

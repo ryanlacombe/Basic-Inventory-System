@@ -76,7 +76,14 @@ namespace Inventory_System
                 }
                 else if (choice == "5")
                 {
-                    EquipArmor();
+                    if (weaponWeight + armorWeight < maxWeight)
+                    {
+                        EquipArmor();
+                    }
+                    else if (weaponWeight + armorWeight > maxWeight)
+                    {
+                        Console.WriteLine("Too much weight! Unequip something before proceeding!");
+                    }
                 }
                 else if (choice == "6" && armorName != "Unarmored")
                 {

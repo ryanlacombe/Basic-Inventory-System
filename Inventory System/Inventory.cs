@@ -12,11 +12,12 @@ namespace Inventory_System
         int baseDamage = 5;
         float gold = 0.00f;
         float minGold = 0.00f;
+        string weaponName = "";
+        int maxWeight = 50;
 
         public void Menu()
         {
             string choice = "";
-            string weaponEquipped = "A";
  
 
             while (choice != "0")
@@ -35,12 +36,10 @@ namespace Inventory_System
                 if (choice == "1")
                 {
                     EquipWeapon();
-                    weaponEquipped = "B";
                 }
-                else if (choice == "2" && weaponEquipped == "B")
+                else if (choice == "2" && weaponName != "Fists")
                 {
                     UnEquipWeapon();
-                    weaponEquipped = "A";
                 }
                 else if(choice == "3")
                 {
@@ -53,11 +52,11 @@ namespace Inventory_System
 
                     Console.WriteLine("How much gold?");
                     float subtractedGold = Convert.ToSingle(Console.ReadLine());
-                    if (gold - subtractedGold > minGold)
+                    if (gold - subtractedGold >= minGold)
                     {
                         SubtractGold(subtractedGold);
                     }
-                    else if(gold - subtractedGold <= minGold)
+                    else if(gold - subtractedGold < minGold)
                     {
                         Console.WriteLine("Invalid operation.");
                     }
@@ -67,16 +66,61 @@ namespace Inventory_System
 
         public void EquipWeapon()
         {
-            Console.WriteLine("Equipped a weapon!");
-            baseDamage = 15;
-            Console.WriteLine("Damage: " + baseDamage);
+            string weaponChoice = "";
+            int weaponDamage = 0;
+            int weaponWeight = 0;
+
+            while (weaponChoice != "0" && weaponWeight <= maxWeight)
+            {
+                //Sub Menu Display
+                Console.WriteLine("Which weapon are you equiping?");
+                Console.WriteLine("");
+                Console.WriteLine("0: Exit to Menu");
+                Console.WriteLine("1: Dagger");
+                Console.WriteLine("2: Sword");
+                Console.WriteLine("3: Mace");
+                Console.WriteLine("4: Greatsword");
+
+                //Get Sub Menu Input
+                weaponChoice = Console.ReadLine();
+                Console.WriteLine("");
+                if(weaponChoice == "1")
+                {
+                    weaponName = "Dagger";
+                    weaponDamage = baseDamage + 5;
+                    Console.WriteLine("Damage: " + weaponDamage);
+                    weaponWeight = 2;
+                }
+                else if (weaponChoice == "2")
+                {
+                    weaponName = "Sword";
+                    weaponDamage = baseDamage + 10;
+                    Console.WriteLine("Damage: " + weaponDamage);
+                    weaponWeight = 5;
+                }
+                else if(weaponChoice == "3")
+                {
+                    weaponName = "Mace";
+                    weaponDamage = baseDamage + 12;
+                    Console.WriteLine("Damage: " + weaponDamage);
+                    weaponWeight = 7;
+                }
+                else if (weaponChoice == "4")
+                {
+                    weaponName = "Greatsword";
+                    weaponDamage = baseDamage + 20;
+                    Console.WriteLine("Damage: " + weaponDamage);
+                    weaponWeight = 15;
+                }
+            }
         }
 
         public void UnEquipWeapon()
         {
-            Console.WriteLine("Unequipped a weapon!");
+            Console.WriteLine("Unequipped " + weaponName + "!");
             baseDamage = 5;
             Console.WriteLine("Damage: " + baseDamage);
+            weaponName = "Fists";
         }
         public void AddGold(float amount)
         {           

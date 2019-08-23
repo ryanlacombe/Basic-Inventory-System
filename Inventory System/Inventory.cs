@@ -15,8 +15,9 @@ namespace Inventory_System
         string weaponName = "";
         int maxWeight = 50;
         int weaponWeight = 0;
-        int baseDefense = 0;
+        int baseDefense = 2;
         string armorName = "";
+        int armorWeight = 0;
 
         public void Menu()
         {
@@ -77,7 +78,7 @@ namespace Inventory_System
                 {
                     EquipArmor();
                 }
-                else if (choice == "6")
+                else if (choice == "6" && armorName != "Unarmored")
                 {
                     UnEquipArmor();
                 }
@@ -89,7 +90,7 @@ namespace Inventory_System
             string weaponChoice = "";
             int weaponDamage = 0;
 
-            while (weaponChoice != "0" && weaponWeight <= maxWeight)
+            while (weaponChoice != "0" && weaponWeight + armorWeight <= maxWeight)
             {
                 //Sub Menu Display
                 Console.WriteLine("Which weapon are you equiping?");
@@ -109,6 +110,7 @@ namespace Inventory_System
                     weaponDamage = baseDamage + 5;
                     Console.WriteLine("Damage: " + weaponDamage);
                     weaponWeight = 2;
+                    weaponChoice = "0";
                 }
                 else if (weaponChoice == "2")
                 {
@@ -116,6 +118,7 @@ namespace Inventory_System
                     weaponDamage = baseDamage + 10;
                     Console.WriteLine("Damage: " + weaponDamage);
                     weaponWeight = 5;
+                    weaponChoice = "0";
                 }
                 else if(weaponChoice == "3")
                 {
@@ -123,6 +126,7 @@ namespace Inventory_System
                     weaponDamage = baseDamage + 12;
                     Console.WriteLine("Damage: " + weaponDamage);
                     weaponWeight = 7;
+                    weaponChoice = "0";
                 }
                 else if (weaponChoice == "4")
                 {
@@ -130,6 +134,7 @@ namespace Inventory_System
                     weaponDamage = baseDamage + 20;
                     Console.WriteLine("Damage: " + weaponDamage);
                     weaponWeight = 15;
+                    weaponChoice = "0";
                 }
             }
         }
@@ -159,13 +164,58 @@ namespace Inventory_System
             int armorDefense = 0;
             
             //Sub Menu Display
+            while (armorChoice != "0" && armorWeight + weaponWeight <= maxWeight)
+            {
+                Console.WriteLine("Which armor are you equipping?");
+                Console.WriteLine("");
+                Console.WriteLine("0: Exit");
+                Console.WriteLine("1: Robes");
+                Console.WriteLine("2: Leather Armor");
+                Console.WriteLine("3: Chainmail");
+                Console.WriteLine("4: Plate Armor");
 
-            //Get Sub Menu Input
+                //Get Sub Menu Input
+                armorChoice = Console.ReadLine();
+
+                if (armorChoice == "1")
+                {
+                    armorName = "Robes";
+                    armorDefense = baseDefense + 2;
+                    Console.WriteLine("Defense: " + armorDefense);
+                    armorWeight = 4;
+                    armorChoice = "0";
+                }
+                else if (armorChoice == "2")
+                {
+                    armorName = "Leather Armor";
+                    armorDefense = baseDefense + 5;
+                    Console.WriteLine("Defense: " + armorDefense);
+                    armorWeight = 6;
+                    armorChoice = "0";
+                }
+                else if (armorChoice == "3")
+                {
+                    armorName = "Chainmail";
+                    armorDefense = baseDefense + 8;
+                    Console.WriteLine("Defense: " + armorDefense);
+                    armorWeight = 14;
+                    armorChoice = "0";
+                }
+                else if (armorChoice == "4")
+                {
+                    armorName = "Plate Armor";
+                    armorDefense = baseDefense + 16;
+                    Console.WriteLine("Defense: " + armorDefense);
+                    armorWeight = 20;
+                    armorChoice = "0";
+                }
+            }
         }
         public void UnEquipArmor()
         {
             Console.WriteLine("Unequipped " + armorName + "!");
             Console.WriteLine("Defense: " + baseDefense);
+            armorName = "Unarmored";
         }
     }
 }

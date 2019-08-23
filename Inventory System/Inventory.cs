@@ -18,6 +18,8 @@ namespace Inventory_System
         int baseDefense = 2;
         string armorName = "";
         int armorWeight = 0;
+        int potionPrice = 15;
+        int potionNum = 0;
 
         public void Menu()
         {
@@ -35,6 +37,8 @@ namespace Inventory_System
                 Console.WriteLine("4: Subtract gold");
                 Console.WriteLine("5: Equip Armor");
                 Console.WriteLine("6: Unequip Armor");
+                Console.WriteLine("7: Buy Potion");
+                Console.WriteLine("8: Drink Potion");
 
                 //Grab input
                 choice = Console.ReadLine();
@@ -88,6 +92,14 @@ namespace Inventory_System
                 else if (choice == "6" && armorName != "Unarmored")
                 {
                     UnEquipArmor();
+                }
+                else if (choice == "7")
+                {
+                    BuyPotion();
+                }
+                else if (choice == "8")
+                {
+                    DrinkPotion();
                 }
             }
         }
@@ -223,6 +235,34 @@ namespace Inventory_System
             Console.WriteLine("Unequipped " + armorName + "!");
             Console.WriteLine("Defense: " + baseDefense);
             armorName = "Unarmored";
+        }
+        public void BuyPotion()
+        {
+            if (gold >= potionPrice)
+            {
+                Console.WriteLine("You buy a potion!");
+                potionNum++;
+                Console.WriteLine("Current Number of Potions: " + potionNum);
+                gold = gold - potionPrice;
+            }
+            else if (gold < potionPrice)
+            {
+                Console.WriteLine("You don't have enough gold to buy a potion.");
+            }
+        }
+        public void DrinkPotion()
+        {
+            if (potionNum > 0)
+            {
+
+                Console.WriteLine("You drink a potion!");
+                potionNum--;
+                Console.WriteLine("Current Number of Potions: " + potionNum);
+            }
+            else if (potionNum <= 0)
+            {
+                Console.WriteLine("You don't have any potions to drink!");
+            }
         }
     }
 }

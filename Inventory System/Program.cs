@@ -31,47 +31,53 @@ namespace Inventory_System
             if (choice == "1")
             {
                 hero = new Knight(name);
+                choice = "";
             }
             else if (choice == "2")
             {
                 hero = new Rogue(name);
+                choice = "";
             }
             else if (choice == "3")
             {
                 hero = new Mage(name);
+                choice = "";
             }
             else
             {
                 hero = new Character(name);
+                choice = "";
             }
-            hero.Print();
 
             Character companion1 = new Rogue("Daniel");
             Character companion2 = new Mage("Tanis");
-            companion1.Print();
-            companion2.Print();
 
-            while (choice != "1" && choice != "2" && choice != "3")
+            while (choice != "0")
             {
-                //Job Choice Menu
+                //Character Inventory Choice Menu
                 Console.WriteLine("\nWhose Inventory are you opening?");
+                Console.WriteLine("0: Exit");
                 Console.WriteLine("1: " + hero.Name());
                 Console.WriteLine("2: " + companion1.Name());
                 Console.WriteLine("3: " + companion2.Name());
                 choice = Console.ReadLine();
+                if (choice == "1")
+                {
+                    hero.Print();
+                    hero.OpenInventory();
+                }
+                else if (choice == "2")
+                {
+                    companion1.Print();
+                    companion1.OpenInventory();
+                }
+                else if (choice == "3")
+                {
+                    companion2.Print();
+                    companion2.OpenInventory();
+                }
             }
-            if (choice == "1")
-            {
-                hero.OpenInventory();
-            }
-            else if (choice == "2")
-            {
-                companion1.OpenInventory();
-            }
-            else if (choice == "3")
-            {
-                companion2.OpenInventory();
-            }
+
             hero.Experience = 100;
 
             int[] testArray = new int[4];

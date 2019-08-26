@@ -41,6 +41,7 @@ namespace Inventory_System
             Console.WriteLine("Strength: " + _strength);
             Console.WriteLine("Dexterity: " + _dexterity);
             Console.WriteLine("Wisdom: " + _wisdom);
+            Console.WriteLine("Combat Damage: " + (_strength + inventory.Damage()));
             Console.WriteLine("");
         }
 

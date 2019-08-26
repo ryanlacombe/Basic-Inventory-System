@@ -9,17 +9,19 @@ namespace Inventory_System
     class Inventory
     {
         
-        int baseDamage = 5;
-        float gold = 0.00f;
-        float minGold = 0.00f;
-        string weaponName = "";
-        int maxWeight = 50;
-        int weaponWeight = 0;
-        int baseDefense = 2;
-        string armorName = "";
-        int armorWeight = 0;
-        int potionPrice = 15;
-        int potionNum = 0;
+        private int _baseDamage = 5;
+        private float _gold = 0.00f;
+        private float _minGold = 0.00f;
+        private string _weaponName = "";
+        private int _maxWeight = 50;
+        private int _weaponWeight = 0;
+        private int _baseDefense = 2;
+        private string _armorName = "";
+        private int _armorWeight = 0;
+        private int _potionPrice = 15;
+        private int _potionNum = 0;
+        private int _weaponDamage = 5;
+        private int _armorDefense = 2;
 
         public void Menu()
         {
@@ -45,16 +47,16 @@ namespace Inventory_System
                 Console.WriteLine("");
                 if (choice == "1")
                 {
-                    if (weaponWeight < maxWeight)
+                    if (_weaponWeight < _maxWeight)
                     {
                         EquipWeapon();
                     }
-                    else if (weaponWeight > maxWeight)
+                    else if (_weaponWeight > _maxWeight)
                     {
                         Console.WriteLine("Too much weight! Unequip something before proceeding!");
                     }
                 }
-                else if (choice == "2" && weaponName != "Fists")
+                else if (choice == "2" && _weaponName != "Fists")
                 {
                     UnEquipWeapon();
                 }
@@ -64,32 +66,32 @@ namespace Inventory_System
                     float addedGold = Convert.ToSingle(Console.ReadLine());
                     AddGold(addedGold);
                 }
-                else if(choice == "4" && minGold == 0.00f)
+                else if(choice == "4" && _minGold == 0.00f)
                 {
 
                     Console.WriteLine("How much gold?");
                     float subtractedGold = Convert.ToSingle(Console.ReadLine());
-                    if (gold - subtractedGold >= minGold)
+                    if (_gold - subtractedGold >= _minGold)
                     {
                         SubtractGold(subtractedGold);
                     }
-                    else if(gold - subtractedGold < minGold)
+                    else if(_gold - subtractedGold < _minGold)
                     {
                         Console.WriteLine("Invalid operation.");
                     }
                 }
                 else if (choice == "5")
                 {
-                    if (weaponWeight + armorWeight < maxWeight)
+                    if (_weaponWeight + _armorWeight < _maxWeight)
                     {
                         EquipArmor();
                     }
-                    else if (weaponWeight + armorWeight > maxWeight)
+                    else if (_weaponWeight + _armorWeight > _maxWeight)
                     {
                         Console.WriteLine("Too much weight! Unequip something before proceeding!");
                     }
                 }
-                else if (choice == "6" && armorName != "Unarmored")
+                else if (choice == "6" && _armorName != "Unarmored")
                 {
                     UnEquipArmor();
                 }
@@ -107,9 +109,8 @@ namespace Inventory_System
         public void EquipWeapon()
         {
             string weaponChoice = "";
-            int weaponDamage = 0;
 
-            while (weaponChoice != "0" && weaponWeight + armorWeight <= maxWeight)
+            while (weaponChoice != "0" && _weaponWeight + _armorWeight <= _maxWeight)
             {
                 //Sub Menu Display
                 Console.WriteLine("Which weapon are you equiping?");
@@ -125,34 +126,34 @@ namespace Inventory_System
                 Console.WriteLine("");
                 if(weaponChoice == "1")
                 {
-                    weaponName = "Dagger";
-                    weaponDamage = baseDamage + 5;
-                    Console.WriteLine("Damage: " + weaponDamage);
-                    weaponWeight = 2;
+                    _weaponName = "Dagger";
+                    _weaponDamage = _baseDamage + 5;
+                    Console.WriteLine("Damage: " + _weaponDamage);
+                    _weaponWeight = 2;
                     weaponChoice = "0";
                 }
                 else if (weaponChoice == "2")
                 {
-                    weaponName = "Sword";
-                    weaponDamage = baseDamage + 10;
-                    Console.WriteLine("Damage: " + weaponDamage);
-                    weaponWeight = 5;
+                    _weaponName = "Sword";
+                    _weaponDamage = _baseDamage + 10;
+                    Console.WriteLine("Damage: " + _weaponDamage);
+                    _weaponWeight = 5;
                     weaponChoice = "0";
                 }
                 else if(weaponChoice == "3")
                 {
-                    weaponName = "Mace";
-                    weaponDamage = baseDamage + 12;
-                    Console.WriteLine("Damage: " + weaponDamage);
-                    weaponWeight = 7;
+                    _weaponName = "Mace";
+                    _weaponDamage = _baseDamage + 12;
+                    Console.WriteLine("Damage: " + _weaponDamage);
+                    _weaponWeight = 7;
                     weaponChoice = "0";
                 }
                 else if (weaponChoice == "4")
                 {
-                    weaponName = "Greatsword";
-                    weaponDamage = baseDamage + 20;
-                    Console.WriteLine("Damage: " + weaponDamage);
-                    weaponWeight = 15;
+                    _weaponName = "Greatsword";
+                    _weaponDamage = _baseDamage + 20;
+                    Console.WriteLine("Damage: " + _weaponDamage);
+                    _weaponWeight = 15;
                     weaponChoice = "0";
                 }
             }
@@ -160,30 +161,29 @@ namespace Inventory_System
 
         public void UnEquipWeapon()
         {
-            Console.WriteLine("Unequipped " + weaponName + "!");
-            baseDamage = 5;
-            Console.WriteLine("Damage: " + baseDamage);
-            weaponName = "Fists";
+            Console.WriteLine("Unequipped " + _weaponName + "!");
+            _baseDamage = 5;
+            Console.WriteLine("Damage: " + _baseDamage);
+            _weaponName = "Fists";
         }
         public void AddGold(float amount)
         {           
             Console.WriteLine("Got " + amount + " gold!");
-            gold += amount;
-            Console.WriteLine("Gold: " + gold);
+            _gold += amount;
+            Console.WriteLine("Gold: " + _gold);
         }
         public void SubtractGold(float amount)
         {
             Console.WriteLine("Lost " + amount + " gold!");
-            gold -= amount;
-            Console.WriteLine("Gold: " + gold);
+            _gold -= amount;
+            Console.WriteLine("Gold: " + _gold);
         }
         public void EquipArmor()
         {
             string armorChoice = "";
-            int armorDefense = 0;
             
             //Sub Menu Display
-            while (armorChoice != "0" && armorWeight + weaponWeight <= maxWeight)
+            while (armorChoice != "0" && _armorWeight + _weaponWeight <= _maxWeight)
             {
                 Console.WriteLine("Which armor are you equipping?");
                 Console.WriteLine("");
@@ -198,82 +198,92 @@ namespace Inventory_System
 
                 if (armorChoice == "1")
                 {
-                    armorName = "Robes";
-                    armorDefense = baseDefense + 2;
-                    Console.WriteLine("Defense: " + armorDefense);
-                    armorWeight = 4;
+                    _armorName = "Robes";
+                    _armorDefense = _baseDefense + 2;
+                    Console.WriteLine("Defense: " + _armorDefense);
+                    _armorWeight = 4;
                     armorChoice = "0";
                 }
                 else if (armorChoice == "2")
                 {
-                    armorName = "Leather Armor";
-                    armorDefense = baseDefense + 5;
-                    Console.WriteLine("Defense: " + armorDefense);
-                    armorWeight = 6;
+                    _armorName = "Leather Armor";
+                    _armorDefense = _baseDefense + 5;
+                    Console.WriteLine("Defense: " + _armorDefense);
+                    _armorWeight = 6;
                     armorChoice = "0";
                 }
                 else if (armorChoice == "3")
                 {
-                    armorName = "Chainmail";
-                    armorDefense = baseDefense + 8;
-                    Console.WriteLine("Defense: " + armorDefense);
-                    armorWeight = 14;
+                    _armorName = "Chainmail";
+                    _armorDefense = _baseDefense + 8;
+                    Console.WriteLine("Defense: " + _armorDefense);
+                    _armorWeight = 14;
                     armorChoice = "0";
                 }
                 else if (armorChoice == "4")
                 {
-                    armorName = "Plate Armor";
-                    armorDefense = baseDefense + 16;
-                    Console.WriteLine("Defense: " + armorDefense);
-                    armorWeight = 20;
+                    _armorName = "Plate Armor";
+                    _armorDefense = _baseDefense + 16;
+                    Console.WriteLine("Defense: " + _armorDefense);
+                    _armorWeight = 20;
                     armorChoice = "0";
                 }
             }
         }
         public void UnEquipArmor()
         {
-            Console.WriteLine("Unequipped " + armorName + "!");
-            Console.WriteLine("Defense: " + baseDefense);
-            armorName = "Unarmored";
+            Console.WriteLine("Unequipped " + _armorName + "!");
+            Console.WriteLine("Defense: " + _baseDefense);
+            _armorName = "Unarmored";
         }
         public void BuyPotion()
         {
-            if (gold >= potionPrice)
+            if (_gold >= _potionPrice)
             {
                 Console.WriteLine("How many potions will you buy?");
                 //Input
                 int buyNum = Convert.ToInt32(Console.ReadLine());
-                if (gold >= potionPrice * buyNum)
+                if (_gold >= _potionPrice * buyNum)
                 {
                     Console.WriteLine("You buy " + buyNum + " potions.");
-                    potionNum = potionNum + buyNum;
-                    Console.WriteLine("Current Number of Potions: " + potionNum);
-                    gold = gold - (potionPrice * buyNum);
-                    Console.WriteLine("Remaining Gold: " + gold);
+                    _potionNum = _potionNum + buyNum;
+                    Console.WriteLine("Current Number of Potions: " + _potionNum);
+                    _gold = _gold - (_potionPrice * buyNum);
+                    Console.WriteLine("Remaining Gold: " + _gold);
                 }
-                else if (gold < potionPrice * buyNum)
+                else if (_gold < _potionPrice * buyNum)
                 {
                     Console.WriteLine("You don't have enough gold to buy that many potions.");
                 }
             }
-            else if (gold < potionPrice)
+            else if (_gold < _potionPrice)
             {
                 Console.WriteLine("You don't have enough gold to buy a potion.");
             }
         }
         public void DrinkPotion()
         {
-            if (potionNum > 0)
+            if (_potionNum > 0)
             {
 
                 Console.WriteLine("You drink a potion!");
-                potionNum--;
-                Console.WriteLine("Current Number of Potions: " + potionNum);
+                _potionNum--;
+                Console.WriteLine("Current Number of Potions: " + _potionNum);
             }
-            else if (potionNum <= 0)
+            else if (_potionNum <= 0)
             {
                 Console.WriteLine("You don't have any potions to drink!");
             }
         }
+        public int Damage()
+        {
+            return _weaponDamage;
+        }
+        public int Defense()
+        {
+            return _armorDefense;
+        }
+
+        public int[] weaponArray = { 5, 10, 12, 20 };
     }
 }

@@ -241,6 +241,7 @@ namespace Inventory_System
             if (gold >= potionPrice)
             {
                 Console.WriteLine("How many potions will you buy?");
+                //Input
                 int buyNum = Convert.ToInt32(Console.ReadLine());
                 if (gold >= potionPrice * buyNum)
                 {

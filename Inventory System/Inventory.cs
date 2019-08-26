@@ -22,7 +22,16 @@ namespace Inventory_System
         private int _potionNum = 0;
         private int _weaponDamage = 5;
         private int _armorDefense = 2;
+        private Attack_Item wep1 = new Attack_Item("Dagger", 5, 2);
+        private Attack_Item wep2 = new Attack_Item("Sword", 10, 5);
+        private Attack_Item wep3 = new Attack_Item("Mace", 12, 7);
+        private Attack_Item wep4 = new Attack_Item("Greatsword", 20, 15);
+        private Attack_Item[] weaponArray = new Attack_Item[10];
 
+        public Inventory()
+        {
+
+        }
         public void Menu()
         {
             string choice = "";
@@ -283,7 +292,5 @@ namespace Inventory_System
         {
             return _armorDefense;
         }
-
-        public int[] weaponArray = { 5, 10, 12, 20 };
     }
 }

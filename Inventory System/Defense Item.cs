@@ -9,17 +9,17 @@ namespace Inventory_System
     class Defense_Item : Item
     {
         private int _defense = 5;
-        public int Damage
+        public int Defense
         {
             get
             {
                 return _defense;
             }
         }
-        public Defense_Item(string newName, int newDamage, int newWeight)
+        public Defense_Item(string newName, int newDefense, int newWeight)
         {
             itemName = newName;
-            _defense = newDamage;
+            _defense = newDefense;
             itemWeight = newWeight;
         }
     }

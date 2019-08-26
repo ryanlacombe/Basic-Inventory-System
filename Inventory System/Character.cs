@@ -13,6 +13,8 @@ namespace Inventory_System
         private int _level = 1;
         private int[] _requiredExp = { 100, 150, 230, 355 };
 
+        private Inventory inventory = new Inventory();
+
         protected int _health = 100;
         protected int _mana = 100;
         protected int _strength = 5;
@@ -40,6 +42,11 @@ namespace Inventory_System
             Console.WriteLine("Dexterity: " + _dexterity);
             Console.WriteLine("Wisdom: " + _wisdom);
             Console.WriteLine("");
+        }
+
+        public void OpenInventory()
+        {
+            inventory.Menu();
         }
 
         public int Experience

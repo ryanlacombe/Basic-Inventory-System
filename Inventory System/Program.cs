@@ -46,11 +46,32 @@ namespace Inventory_System
             }
             hero.Print();
 
-            //Character companion1 = new Rogue(name);
-            //Character companion2 = new Mage(name);
-            //companion1.Print();
-            //companion2.Print();
+            Character companion1 = new Rogue("Daniel");
+            Character companion2 = new Mage("Tanis");
+            companion1.Print();
+            companion2.Print();
 
+            while (choice != "1" && choice != "2" && choice != "3")
+            {
+                //Job Choice Menu
+                Console.WriteLine("\nWhose Inventory are you opening?");
+                Console.WriteLine("1: " + hero.Name());
+                Console.WriteLine("2: " + companion1.Name());
+                Console.WriteLine("3: " + companion2.Name());
+                choice = Console.ReadLine();
+            }
+            if (choice == "1")
+            {
+                hero.OpenInventory();
+            }
+            else if (choice == "2")
+            {
+                companion1.OpenInventory();
+            }
+            else if (choice == "3")
+            {
+                companion2.OpenInventory();
+            }
             hero.Experience = 100;
 
             int[] testArray = new int[4];
@@ -64,7 +85,7 @@ namespace Inventory_System
 
             string[] stringArray = new string[3];
 
-            //Character[] party = { hero, companion1, companion1};
+            Character[] party = { hero, companion1, companion1};
 
             Console.ReadKey();
         }

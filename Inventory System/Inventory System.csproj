@@ -45,8 +45,11 @@
   <ItemGroup>
     <Compile Include="Character.cs" />
     <Compile Include="Inventory.cs" />
+    <Compile Include="Knight.cs" />
+    <Compile Include="Mage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rogue.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

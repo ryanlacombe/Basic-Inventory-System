@@ -13,13 +13,43 @@ namespace Inventory_System
             //Inventory inventory = new Inventory();
             //inventory.Menu();
 
-            Character hero = new Character("Rain");
+            string name = "";
+            string choice = "";
+
+            Console.WriteLine("What is the Hero's name?");
+            name = Console.ReadLine();
+            while(choice != "1" && choice != "2" && choice != "3")
+            {
+                //Job Choice Menu
+                Console.WriteLine("\nChoose a job:");
+                Console.WriteLine("1: Knight");
+                Console.WriteLine("2: Rogue");
+                Console.WriteLine("3: Mage");
+                choice = Console.ReadLine();
+            }
+            Character hero;
+            if (choice == "1")
+            {
+                hero = new Knight(name);
+            }
+            else if (choice == "2")
+            {
+                hero = new Rogue(name);
+            }
+            else if (choice == "3")
+            {
+                hero = new Mage(name);
+            }
+            else
+            {
+                hero = new Character(name);
+            }
             hero.Print();
 
-            Character companion1 = new Character("Daniel");
-            Character companion2 = new Character("Tannis");
-            companion1.Print();
-            companion2.Print();
+            //Character companion1 = new Rogue(name);
+            //Character companion2 = new Mage(name);
+            //companion1.Print();
+            //companion2.Print();
 
             hero.Experience = 100;
 
@@ -34,7 +64,7 @@ namespace Inventory_System
 
             string[] stringArray = new string[3];
 
-            Character[] party = { hero, companion1, companion1};
+            //Character[] party = { hero, companion1, companion1};
 
             Console.ReadKey();
         }

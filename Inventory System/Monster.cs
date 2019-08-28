@@ -55,11 +55,40 @@ namespace Inventory_System
         }
         public void Fight(Monster target)
         {
+            if(Health <= 0)
+            {
+                return;
+            }
             //Gets damage of current monster
             int damage = GetDamage();
             //Subracting damage from target health 
             target.Health = target.Health - damage;
             Console.WriteLine(GetName() + " attacks " + target.GetName() + "! It takes " + damage + " damage!");
+        }
+        public void Fight(Monster[] targets)
+        {
+            if(Health <= 0)
+            {
+                return;
+            }
+            bool validInput = false;
+            while(!validInput)
+            {
+                Console.WriteLine("\nWho will " + GetName() + " fight?");
+                for (int i = 0; i < targets.Length; i++)
+                {
+                    Monster currentTarget = targets[i];
+                    Console.WriteLine((i) + ": " + currentTarget.GetName());
+                }
+
+                string input = Console.ReadLine();
+                int choice = Convert.ToInt32(input);
+                if(choice >= 0 && choice < targets.Length)
+                {
+                    validInput = true;
+                    Fight(targets[choice]);
+                }
+            }
         }
     }
 }

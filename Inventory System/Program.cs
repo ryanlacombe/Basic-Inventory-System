@@ -13,11 +13,20 @@ namespace Inventory_System
             //Inventory inventory = new Inventory();
             //inventory.Menu();
 
+            //Creates Monsters
             Monster monster1 = new Monster("Carbuncle", 30, 10);
-            monster1.Print();
             Monster monster2 = new Monster("Slime", 15, 5);
-            monster2.Print();
-            monster2.Fight(monster1);
+            Monster monster3 = new Monster("Carbuncle", 30, 10);
+            Monster monster4 = new Monster("Slime", 15, 5);
+
+            //Arrays Monsters
+            Monster[] goodTeam = { monster1, monster2 };
+            Monster[] badTeam = { monster3, monster4 };
+
+            Encounter encounter = new Encounter(goodTeam, badTeam);
+            encounter.Print();
+            encounter.BeginRound();
+
             Console.ReadKey();
             return;
 

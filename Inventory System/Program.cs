@@ -13,6 +13,14 @@ namespace Inventory_System
             //Inventory inventory = new Inventory();
             //inventory.Menu();
 
+            Monster monster1 = new Monster("Carbuncle", 30, 10);
+            monster1.Print();
+            Monster monster2 = new Monster("Slime", 15, 5);
+            monster2.Print();
+            monster2.Fight(monster1);
+            Console.ReadKey();
+            return;
+
             string name = "";
             string choice = "";
 

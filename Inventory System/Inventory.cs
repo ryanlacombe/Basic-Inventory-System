@@ -22,15 +22,21 @@ namespace Inventory_System
         private int _potionNum = 0;
         private int _weaponDamage = 5;
         private int _armorDefense = 2;
-        private Attack_Item wep1 = new Attack_Item("Dagger", 5, 2);
-        private Attack_Item wep2 = new Attack_Item("Sword", 10, 5);
-        private Attack_Item wep3 = new Attack_Item("Mace", 12, 7);
-        private Attack_Item wep4 = new Attack_Item("Greatsword", 20, 15);
-        private Attack_Item[] weaponArray = new Attack_Item[10];
+        private Attack_Item[] _weaponArray = new Attack_Item[4];
+        private Defense_Item[] _armorArray = new Defense_Item[4];
 
         public Inventory()
         {
-
+            //Create weapon array
+            _weaponArray[0] = new Attack_Item("Dagger", 5, 2);
+            _weaponArray[1] = new Attack_Item("Sword", 10, 5);
+            _weaponArray[2] = new Attack_Item("Mace", 12, 7);
+            _weaponArray[3] = new Attack_Item("Greatsword", 20, 15);
+            //Create Defense array
+            _armorArray[0] = new Defense_Item("Robes", 2, 4);
+            _armorArray[1] = new Defense_Item("Leather Armor", 5, 6);
+            _armorArray[2] = new Defense_Item("Chainmail", 8, 14);
+            _armorArray[3] = new Defense_Item("Plate Armor", 16, 20);
         }
         public void Menu()
         {

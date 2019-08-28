@@ -25,7 +25,7 @@ namespace Inventory_System
 
             Encounter encounter = new Encounter(goodTeam, badTeam);
             encounter.Print();
-            encounter.BeginRound();
+            encounter.Start();
 
             Console.ReadKey();
             return;

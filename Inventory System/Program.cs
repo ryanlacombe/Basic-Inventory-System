@@ -19,24 +19,6 @@ namespace Inventory_System
             //Inventory inventory = new Inventory();
             //inventory.Menu();
 
-            //Creates Monsters
-            Monster monster1 = new Monster("Carbuncle", 30, 10);
-            Monster monster2 = new Monster("Slime", 15, 5);
-            Monster monster3 = new Monster("Carbuncle", 30, 10);
-            Monster monster4 = new Monster("Slime", 15, 5);
-            Character tester1 = new Knight("Dan");
-
-            //Arrays Monsters
-            Creature[] goodTeam = { tester1, monster1, monster2 };
-            Creature[] badTeam = { monster3, monster4 };
-
-            Encounter encounter = new Encounter(goodTeam, badTeam);
-            encounter.Print();
-            encounter.Start();
-
-            Console.ReadKey();
-
-            return;
 
             string name = "";
             string choice = "";
@@ -89,6 +71,7 @@ namespace Inventory_System
                 if (choice == "1")
                 {
                     hero.Print();
+                    hero.OpenInventory();
                     Console.WriteLine(hero.GetDamage());
                 }
                 else if (choice == "2")
@@ -103,20 +86,19 @@ namespace Inventory_System
                 }
             }
 
+            //Creates Monsters
+            Monster monster1 = new Monster("Carbuncle", 30, 10);
+            Monster monster2 = new Monster("Slime", 15, 5);
+
+            //Arrays Monsters
+            Creature[] goodTeam = { hero, companion1, companion2 };
+            Creature[] badTeam = { monster1, monster2 };
+
+            Encounter encounter = new Encounter(goodTeam, badTeam);
+            encounter.Print();
+            encounter.Start();
+
             hero.Experience = 100;
-
-            int[] testArray = new int[4];
-
-            testArray[0] = 1;
-            testArray[1] = 3;
-            testArray[2] = 5;
-            testArray[3] = 7;
-
-            int[] testArray2 = { 2, 4, 6, 8 };
-
-            string[] stringArray = new string[3];
-
-            Character[] party = { hero, companion1, companion1};
 
             Console.ReadKey();
         }

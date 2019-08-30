@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Inventory_System
 {
-    class Character
+    class Character : Creature
     {
         private string _name = "";
         private int _exp = 0;
@@ -15,7 +15,6 @@ namespace Inventory_System
 
         private Inventory inventory = new Inventory();
 
-        protected int _health = 100;
         protected int _mana = 100;
         protected int _strength = 5;
         protected int _dexterity = 5;
@@ -24,11 +23,18 @@ namespace Inventory_System
         public Character(string name)
         {
             _name = name;
+            _health = 100;
+            _maxhealth = 100;
         }
 
-        public string Name()
+        public override string GetName()
         {
             return _name;
+        }
+        public override int GetDamage()
+        {
+            int totalDamage = _strength + inventory.Damage();
+            return totalDamage;
         }
 
         public void Print()

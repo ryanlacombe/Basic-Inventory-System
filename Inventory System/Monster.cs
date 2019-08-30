@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Inventory_System
 {
-    class Monster
+    class Monster : Creature
     {
         private string _name;
-        private int _health;
         private int _damage;
-        private int _maxhealth;
 
         public Monster(string monsterName, int monsterHealth, int monsterDamage)
         {
@@ -20,32 +18,13 @@ namespace Inventory_System
             _maxhealth = monsterHealth;
             _damage = monsterDamage;
         }
-        public string GetName()
+        public override string GetName()
         {
             return _name;
         }
-        public int GetDamage()
+        public override int GetDamage()
         {
             return _damage;
-        }
-        public int Health
-        {
-            get
-            {
-                return _health;
-            }
-            set
-            {
-                _health = value;
-                if (_health > _maxhealth)
-                {
-                    _health = _maxhealth;
-                }
-                else if (_health < 0)
-                {
-                    _health = 0;
-                }
-            }
         }
         public void Print()
         {
@@ -53,7 +32,7 @@ namespace Inventory_System
             Console.WriteLine(_health);
             Console.WriteLine(_damage);
         }
-        public void Fight(Monster target)
+        public override void Fight(Creature target)
         {
             if(Health <= 0)
             {
@@ -65,7 +44,7 @@ namespace Inventory_System
             target.Health = target.Health - damage;
             Console.WriteLine(GetName() + " attacks " + target.GetName() + "! It takes " + damage + " damage!");
         }
-        public void Fight(Monster[] targets)
+        public override void Fight(Creature[] targets)
         {
             if(Health <= 0)
             {
@@ -77,7 +56,7 @@ namespace Inventory_System
                 Console.WriteLine("\nWho will " + GetName() + " fight?");
                 for (int i = 0; i < targets.Length; i++)
                 {
-                    Monster currentTarget = targets[i];
+                    Creature currentTarget = targets[i];
                     Console.WriteLine((i) + ": " + currentTarget.GetName());
                 }
 

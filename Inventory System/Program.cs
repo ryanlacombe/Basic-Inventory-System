@@ -10,6 +10,12 @@ namespace Inventory_System
     {
         static void Main(string[] args)
         {
+
+            //Character test = new Character("Test");
+            //Console.WriteLine(test.GetDamage());
+
+
+
             //Inventory inventory = new Inventory();
             //inventory.Menu();
 
@@ -28,6 +34,7 @@ namespace Inventory_System
             encounter.Start();
 
             Console.ReadKey();
+
             return;
 
             string name = "";
@@ -81,7 +88,7 @@ namespace Inventory_System
                 if (choice == "1")
                 {
                     hero.Print();
-                    hero.OpenInventory();
+                    Console.WriteLine(hero.GetDamage());
                 }
                 else if (choice == "2")
                 {

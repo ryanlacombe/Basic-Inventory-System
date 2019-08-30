@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Attack Item.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="Creature.cs" />
     <Compile Include="Defense Item.cs" />
     <Compile Include="Encounter.cs" />
     <Compile Include="Inventory.cs" />

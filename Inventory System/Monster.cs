@@ -26,7 +26,7 @@ namespace Inventory_System
         {
             return _damage;
         }
-        public void Print()
+        public override void Print()
         {
             Console.WriteLine(_name);
             Console.WriteLine(_health);

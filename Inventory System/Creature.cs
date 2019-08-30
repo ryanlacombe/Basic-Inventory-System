@@ -38,6 +38,10 @@ namespace Inventory_System
         {
             return "";
         }
+        public virtual void Print()
+        {
+
+        }
         public virtual void Fight(Creature target)
         {
 

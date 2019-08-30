@@ -24,10 +24,11 @@ namespace Inventory_System
             Monster monster2 = new Monster("Slime", 15, 5);
             Monster monster3 = new Monster("Carbuncle", 30, 10);
             Monster monster4 = new Monster("Slime", 15, 5);
+            Character tester1 = new Knight("Dan");
 
             //Arrays Monsters
-            Monster[] goodTeam = { monster1, monster2 };
-            Monster[] badTeam = { monster3, monster4 };
+            Creature[] goodTeam = { tester1, monster1, monster2 };
+            Creature[] badTeam = { monster3, monster4 };
 
             Encounter encounter = new Encounter(goodTeam, badTeam);
             encounter.Print();
@@ -81,9 +82,9 @@ namespace Inventory_System
                 //Character Inventory Choice Menu
                 Console.WriteLine("\nWhose Inventory are you opening?");
                 Console.WriteLine("0: Exit");
-                Console.WriteLine("1: " + hero.Name());
-                Console.WriteLine("2: " + companion1.Name());
-                Console.WriteLine("3: " + companion2.Name());
+                Console.WriteLine("1: " + hero.GetName());
+                Console.WriteLine("2: " + companion1.GetName());
+                Console.WriteLine("3: " + companion2.GetName());
                 choice = Console.ReadLine();
                 if (choice == "1")
                 {

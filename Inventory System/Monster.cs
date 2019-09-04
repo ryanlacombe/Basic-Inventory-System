@@ -50,6 +50,12 @@ namespace Inventory_System
             {
                 return;
             }
+
+            Random random = new Random();
+            int choice = random.Next(0, targets.Length - 1);
+            Fight(targets[choice]);
+
+            /*
             bool validInput = false;
             while(!validInput)
             {
@@ -68,6 +74,7 @@ namespace Inventory_System
                     Fight(targets[choice]);
                 }
             }
+            */
         }
     }
 }

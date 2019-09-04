@@ -14,6 +14,7 @@ namespace Inventory_System
         private int _south;
         private int _west;
         private int _east;
+        public string _hidden;
 
         public Scene(string name, int northId, int southId, int westId, int eastId, string description)
         {
@@ -23,6 +24,18 @@ namespace Inventory_System
             _south = southId;
             _west = westId;
             _east = eastId;
+            _hidden = "Nothing was found.";
+        }
+
+        public Scene(string name, int northId, int southId, int westId, int eastId, string description, string hidden)
+        {
+            _name = name;
+            _description = description;
+            _north = northId;
+            _south = southId;
+            _west = westId;
+            _east = eastId;
+            _hidden = hidden;
         }
 
         //Return name
@@ -71,6 +84,10 @@ namespace Inventory_System
                 //If given invalid choice, gives a -1
                 return -1;
             }
+        }
+        public string GetHidden()
+        {
+            return _hidden;
         }
     }
 }

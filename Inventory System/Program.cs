@@ -19,6 +19,7 @@ namespace Inventory_System
             //Inventory inventory = new Inventory();
             //inventory.Menu();
 
+            /*
             //Creates Scenes
             //0: Courtyard
             //1: Castle Gate
@@ -32,7 +33,7 @@ namespace Inventory_System
             Scene[] scenes = { scene1, scene2, scene3, scene4 };
             Map map = new Map(0, scenes);
 
-            /*
+            
             map.PrintCurrentScene();
             map.CurrentSceneID = 1;
             map.PrintCurrentScene();
@@ -41,12 +42,12 @@ namespace Inventory_System
             map.CurrentSceneID = 3;
             map.PrintCurrentScene();
             map.CurrentSceneID = 4;
-            */
             map.Menu();
 
             Console.ReadKey();
 
             return;
+            */
 
             string name = "";
             string choice = "";

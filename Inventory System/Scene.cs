@@ -15,8 +15,10 @@ namespace Inventory_System
         private int _west;
         private int _east;
         public string _hidden;
+        private Creature[] _enemies;
+        private bool _cleared = false;
 
-        public Scene(string name, int northId, int southId, int westId, int eastId, string description)
+        public Scene(string name, int northId, int southId, int westId, int eastId, Creature[] enemies, string description)
         {
             _name = name;
             _description = description;
@@ -24,10 +26,15 @@ namespace Inventory_System
             _south = southId;
             _west = westId;
             _east = eastId;
+            _enemies = enemies;
             _hidden = "Nothing was found.";
+            if (_enemies.Length == 0)
+            {
+                _cleared = true;
+            }
         }
 
-        public Scene(string name, int northId, int southId, int westId, int eastId, string description, string hidden)
+        public Scene(string name, int northId, int southId, int westId, int eastId, Creature[] enemies, string description, string hidden)
         {
             _name = name;
             _description = description;
@@ -35,7 +42,12 @@ namespace Inventory_System
             _south = southId;
             _west = westId;
             _east = eastId;
+            _enemies = enemies;
             _hidden = hidden;
+            if(_enemies.Length == 0)
+            {
+                _cleared = true;
+            }
         }
 
         //Return name
@@ -48,6 +60,18 @@ namespace Inventory_System
         public string GetDescription()
         {
             return _description;
+        }
+
+        //Returns list of monsters
+        public Creature[] GetEnemies()
+        {
+            return _enemies;
+        }
+
+        //Checks if scene is cleared
+        public bool GetCleared()
+        {
+            return _cleared;
         }
 
         //Gets the users choice

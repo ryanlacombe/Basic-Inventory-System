@@ -20,42 +20,12 @@ namespace Inventory_System
             //Inventory inventory = new Inventory();
             //inventory.Menu();
 
-            /*
-            //Creates Scenes
-            //0: Courtyard
-            //1: Castle Gate
-            //2: Graveyard
-            //3: Village
-            Scene scene1 = new Scene("Courtyard", 1, 3, 2, -1, "The courtyard is wide. A number of nobles mill about the garden. There are exits to the north, south, and west.");
-            Scene scene2 = new Scene("Castle Gate", -1, 0, -1, -1, "The massive gate of the Castle is currently closed. You can only leave to the south.");
-            Scene scene3 = new Scene("Graveyard", 3, -1, -1, 0, "The graveyard is earily quiet. Many graves are in disrepair and have dead flowers. There exits to the east and north.");
-            Scene scene4 = new Scene("Village", 0, 2, -1, -1, "The village is bustling with activity. Many shops line the streets and most have criers advertising their wares. There are exits to the south and north.");
-
-            Scene[] scenes = { scene1, scene2, scene3, scene4 };
-            Map map = new Map(0, scenes);
-
-            
-            map.PrintCurrentScene();
-            map.CurrentSceneID = 1;
-            map.PrintCurrentScene();
-            map.CurrentSceneID = 2;
-            map.PrintCurrentScene();
-            map.CurrentSceneID = 3;
-            map.PrintCurrentScene();
-            map.CurrentSceneID = 4;
-            map.Menu();
-
-            Console.ReadKey();
-
-            return;
-            */
-
             string name = "";
             string choice = "";
 
             Console.WriteLine("What is the Hero's name?");
             name = Console.ReadLine();
-            while(choice != "1" && choice != "2" && choice != "3")
+            while (choice != "1" && choice != "2" && choice != "3")
             {
                 //Job Choice Menu
                 Console.WriteLine("\nChoose a job:");
@@ -89,6 +59,47 @@ namespace Inventory_System
             Character companion1 = new Rogue("Daniel");
             Character companion2 = new Mage("Tanis");
 
+            //Creates Monsters
+            Monster monster1 = new Monster("Carbuncle", 30, 10, 50);
+            Monster monster2 = new Monster("Slime", 15, 5, 50);
+
+            //Arrays Monsters
+            Creature[] goodTeam = { hero, companion1, companion2 };
+            Creature[] badTeam = { monster1, monster2 };
+            Creature[] emptyTeam = { };
+
+            //Creates Scenes
+            //0: Courtyard
+            //1: Castle Gate
+            //2: Graveyard
+            //3: Village
+            Scene scene1 = new Scene("Courtyard", 1, 3, 2, -1, emptyTeam, "The courtyard is wide. A number of nobles mill about the garden. There are exits to the north, south, and west.");
+            Scene scene2 = new Scene("Castle Gate", -1, 0, -1, -1, emptyTeam, "The massive gate of the Castle is currently closed. You can only leave to the south.");
+            Scene scene3 = new Scene("Graveyard", 3, -1, -1, 0, badTeam, "The graveyard is earily quiet. Many graves are in disrepair and have dead flowers. There exits to the east and north.");
+            Scene scene4 = new Scene("Village", 0, 2, -1, -1, emptyTeam, "The village is bustling with activity. Many shops line the streets and most have criers advertising their wares. There are exits to the south and north.");
+
+            Scene[] scenes = { scene1, scene2, scene3, scene4 };
+            Map map = new Map(0, scenes, goodTeam);
+
+            /*
+            map.PrintCurrentScene();
+            map.CurrentSceneID = 1;
+            map.PrintCurrentScene();
+            map.CurrentSceneID = 2;
+            map.PrintCurrentScene();
+            map.CurrentSceneID = 3;
+            map.PrintCurrentScene();
+            map.CurrentSceneID = 4;
+            */
+
+            map.Menu();
+
+            Console.ReadKey();
+
+            return;
+            
+
+
             while (choice != "0")
             {
                 //Character Inventory Choice Menu
@@ -115,14 +126,6 @@ namespace Inventory_System
                     companion2.OpenInventory();
                 }
             }
-
-            //Creates Monsters
-            Monster monster1 = new Monster("Carbuncle", 30, 10, 50);
-            Monster monster2 = new Monster("Slime", 15, 5, 50);
-
-            //Arrays Monsters
-            Creature[] goodTeam = { hero, companion1, companion2 };
-            Creature[] badTeam = { monster1, monster2 };
 
             Encounter encounter = new Encounter(goodTeam, badTeam);
             encounter.Print();

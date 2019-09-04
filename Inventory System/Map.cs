@@ -11,11 +11,13 @@ namespace Inventory_System
     {
         private int _currentLocation;
         private Scene[] _sceneList;
+        private Creature[] _players;
 
-        public Map(int startingSceneID, Scene[] scenes)
+        public Map(int startingSceneID, Scene[] scenes, Creature[] players)
         {
             _currentLocation = startingSceneID;
             _sceneList = scenes;
+            _players = players;
         }
         
         //Prints current scene
@@ -64,6 +66,8 @@ namespace Inventory_System
             {
                 //Prints Scene
                 PrintCurrentScene();
+                //Checks for enemies
+                CheckForCreatures();
                 //Open Menu
                 Console.WriteLine("\nMenu:");
                 Console.WriteLine("0: Exit");
@@ -118,6 +122,19 @@ namespace Inventory_System
             if (_currentLocation >= 0 && _currentLocation < _sceneList.Length)
             {
                 Console.WriteLine(_sceneList[_currentLocation].GetHidden());
+            }
+        }
+        public void CheckForCreatures()
+        {
+            if(_currentLocation >= 0 && _currentLocation < _sceneList.Length)
+            {
+                Scene currentScene = _sceneList[_currentLocation];
+                if(currentScene.GetCleared() == false)
+                {
+                    //Creates encounter and fights
+                    Encounter encounter = new Encounter(_players, currentScene.GetEnemies());
+                    encounter.Start();
+                }
             }
         }
         public void Save(string path)

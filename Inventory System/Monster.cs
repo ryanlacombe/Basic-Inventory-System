@@ -10,7 +10,7 @@ namespace Inventory_System
     {
         private string _name;
         private int _damage;
-        private int _givenExp;
+        private int _exp;
 
         public Monster(string monsterName, int monsterHealth, int monsterDamage, int monsterExp)
         {
@@ -18,7 +18,7 @@ namespace Inventory_System
             _health = monsterHealth;
             _maxhealth = monsterHealth;
             _damage = monsterDamage;
-            _givenExp = monsterExp;
+            _exp = monsterExp;
         }
         public override string GetName()
         {
@@ -30,7 +30,7 @@ namespace Inventory_System
         }
         public override int GetExp()
         {
-            return _givenExp;
+            return _exp;
         }
         public override void Print()
         {

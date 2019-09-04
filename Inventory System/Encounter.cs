@@ -80,15 +80,6 @@ namespace Inventory_System
                     else if (currentMonster.Health <= 0)
                     {
                         badAlive = false;
-                        //Give Exp to each character
-                        foreach(Creature cr in _badMonsters)
-                        {
-                            if(cr is Character)
-                            {
-                                Character ch = (Character)cr; 
-                                ch.Experience += GetTotalExp(_goodMonsters);
-                            }
-                        }
                     }
                 }
 
@@ -103,8 +94,31 @@ namespace Inventory_System
                 {
                     //End fight
                     stillFighting = false;
+                    if(goodAlive)
+                    {
+                        //Give Exp to each character
+                        foreach (Creature cr in _goodMonsters)
+                        {
+                            if (cr is Character)
+                            {
+                                Character ch = (Character)cr;
+                                ch.Experience += GetTotalExp(_badMonsters);
+                            }
+                        }
+                    }
+                    else if(badAlive)
+                    {
+                        //Give Exp to each character
+                        foreach (Creature cr in _badMonsters)
+                        {
+                            if (cr is Character)
+                            {
+                                Character ch = (Character)cr;
+                                ch.Experience += GetTotalExp(_goodMonsters);
+                            }
+                        }
+                    }
                 }
-                Print();
             }
         }
         public int GetTotalExp(Creature[] team)

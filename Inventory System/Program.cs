@@ -117,8 +117,8 @@ namespace Inventory_System
             }
 
             //Creates Monsters
-            Monster monster1 = new Monster("Carbuncle", 30, 10, 100);
-            Monster monster2 = new Monster("Slime", 15, 5, 100);
+            Monster monster1 = new Monster("Carbuncle", 30, 10, 50);
+            Monster monster2 = new Monster("Slime", 15, 5, 50);
 
             //Arrays Monsters
             Creature[] goodTeam = { hero, companion1, companion2 };

@@ -11,6 +11,7 @@ namespace Inventory_System
         public Rogue(string name) : base(name)
         {
             _health = 150;
+            _maxhealth = 150;
             _mana = 70;
             _strength = 4;
             _dexterity = 8;

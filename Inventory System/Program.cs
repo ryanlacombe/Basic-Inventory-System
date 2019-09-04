@@ -8,6 +8,7 @@ namespace Inventory_System
 {
     class Program
     {
+        public static Random random = new Random();
         static void Main(string[] args)
         {
 
@@ -116,8 +117,8 @@ namespace Inventory_System
             }
 
             //Creates Monsters
-            Monster monster1 = new Monster("Carbuncle", 30, 10);
-            Monster monster2 = new Monster("Slime", 15, 5);
+            Monster monster1 = new Monster("Carbuncle", 30, 10, 100);
+            Monster monster2 = new Monster("Slime", 15, 5, 100);
 
             //Arrays Monsters
             Creature[] goodTeam = { hero, companion1, companion2 };
@@ -127,7 +128,7 @@ namespace Inventory_System
             encounter.Print();
             encounter.Start();
 
-            hero.Experience = 100;
+            //hero.Experience = 100;
 
             Console.ReadKey();
         }

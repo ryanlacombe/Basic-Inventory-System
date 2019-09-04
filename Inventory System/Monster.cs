@@ -10,13 +10,15 @@ namespace Inventory_System
     {
         private string _name;
         private int _damage;
+        private int _givenExp;
 
-        public Monster(string monsterName, int monsterHealth, int monsterDamage)
+        public Monster(string monsterName, int monsterHealth, int monsterDamage, int monsterExp)
         {
             _name = monsterName;
             _health = monsterHealth;
             _maxhealth = monsterHealth;
             _damage = monsterDamage;
+            _givenExp = monsterExp;
         }
         public override string GetName()
         {
@@ -25,6 +27,10 @@ namespace Inventory_System
         public override int GetDamage()
         {
             return _damage;
+        }
+        public override int GetExp()
+        {
+            return _givenExp;
         }
         public override void Print()
         {
@@ -42,7 +48,9 @@ namespace Inventory_System
             int damage = GetDamage();
             //Subracting damage from target health 
             target.Health = target.Health - damage;
+            Console.WriteLine("");
             Console.WriteLine(GetName() + " attacks " + target.GetName() + "! It takes " + damage + " damage!");
+            Console.WriteLine("");
         }
         public override void Fight(Creature[] targets)
         {
@@ -51,8 +59,7 @@ namespace Inventory_System
                 return;
             }
 
-            Random random = new Random();
-            int choice = random.Next(0, targets.Length - 1);
+            int choice = Program.random.Next(0, targets.Length);
             Fight(targets[choice]);
 
             /*

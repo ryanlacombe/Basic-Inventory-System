@@ -38,6 +38,10 @@ namespace Inventory_System
         {
             return "";
         }
+        public virtual int GetExp()
+        {
+            return 0;
+        }
         public virtual void Print()
         {
 

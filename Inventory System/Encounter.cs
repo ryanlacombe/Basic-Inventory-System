@@ -80,6 +80,15 @@ namespace Inventory_System
                     else if (currentMonster.Health <= 0)
                     {
                         badAlive = false;
+                        //Give Exp to each character
+                        foreach(Creature cr in _badMonsters)
+                        {
+                            if(cr is Character)
+                            {
+                                Character ch = (Character)cr; 
+                                ch.Experience += GetTotalExp(_goodMonsters);
+                            }
+                        }
                     }
                 }
 
@@ -97,6 +106,16 @@ namespace Inventory_System
                 }
                 Print();
             }
+        }
+        public int GetTotalExp(Creature[] team)
+        {
+            int totalExp = 0;
+            for(int i = 0; i < team.Length; i++)
+            {
+                totalExp += team[i].GetExp();
+            }
+
+            return totalExp;
         }
     }
 }

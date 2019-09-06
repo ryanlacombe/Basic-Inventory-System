@@ -143,7 +143,17 @@ namespace Inventory_System
             StreamWriter writer = File.CreateText(path);
             //Writes in same way as console
             writer.WriteLine(CurrentSceneID);
-            //Closes
+
+            //Creates loop to save characters
+            foreach (Creature cr in _players)
+            {
+                if (cr is Character)
+                {
+                    Character ch = (Character)cr;
+                    ch.CharacterSave(writer);
+                }
+            }
+            //Closes it
             writer.Close();
         }
         public void Load(string path)
@@ -154,6 +164,14 @@ namespace Inventory_System
                 StreamReader reader = File.OpenText(path);
                 //Reads in same way as console
                 CurrentSceneID = Convert.ToInt32(reader.ReadLine());
+                foreach (Creature cr in _players)
+                {
+                    if (cr is Character)
+                    {
+                        Character ch = (Character)cr;
+                        ch.CharacterLoad(reader);
+                    }
+                }
                 //Closes
                 reader.Close();
             }

@@ -59,6 +59,35 @@ namespace Inventory_System
             Character companion1 = new Rogue("Daniel");
             Character companion2 = new Mage("Tanis");
 
+            /*
+            while (choice != "0")
+            {
+                //Character Inventory Choice Menu
+                Console.WriteLine("\nWhose Inventory are you opening?");
+                Console.WriteLine("0: Exit");
+                Console.WriteLine("1: " + hero.GetName());
+                Console.WriteLine("2: " + companion1.GetName());
+                Console.WriteLine("3: " + companion2.GetName());
+                choice = Console.ReadLine();
+                if (choice == "1")
+                {
+                    hero.Print();
+                    hero.OpenInventory();
+                    Console.WriteLine(hero.GetDamage());
+                }
+                else if (choice == "2")
+                {
+                    companion1.Print();
+                    companion1.OpenInventory();
+                }
+                else if (choice == "3")
+                {
+                    companion2.Print();
+                    companion2.OpenInventory();
+                }
+            }
+            */
+
             //Creates Monsters
             Monster monster1 = new Monster("Carbuncle", 30, 10, 50);
             Monster monster2 = new Monster("Slime", 15, 5, 50);
@@ -94,46 +123,14 @@ namespace Inventory_System
 
             map.Menu();
 
+            hero.Print();
+            companion1.Print();
+            companion2.Print();
+
+
             Console.ReadKey();
 
             return;
-            
-
-
-            while (choice != "0")
-            {
-                //Character Inventory Choice Menu
-                Console.WriteLine("\nWhose Inventory are you opening?");
-                Console.WriteLine("0: Exit");
-                Console.WriteLine("1: " + hero.GetName());
-                Console.WriteLine("2: " + companion1.GetName());
-                Console.WriteLine("3: " + companion2.GetName());
-                choice = Console.ReadLine();
-                if (choice == "1")
-                {
-                    hero.Print();
-                    hero.OpenInventory();
-                    Console.WriteLine(hero.GetDamage());
-                }
-                else if (choice == "2")
-                {
-                    companion1.Print();
-                    companion1.OpenInventory();
-                }
-                else if (choice == "3")
-                {
-                    companion2.Print();
-                    companion2.OpenInventory();
-                }
-            }
-
-            Encounter encounter = new Encounter(goodTeam, badTeam);
-            encounter.Print();
-            encounter.Start();
-
-            //hero.Experience = 100;
-
-            Console.ReadKey();
         }
     }
 }

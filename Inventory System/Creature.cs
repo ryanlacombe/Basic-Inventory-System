@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Inventory_System
 {
@@ -54,7 +55,13 @@ namespace Inventory_System
         {
 
         }
-        
-        
+        public virtual void CharacterSave(StreamWriter writer)
+        {
+
+        }
+        public virtual void CharacterLoad(StreamReader reader)
+        {
+
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Inventory_System
 {
@@ -65,7 +66,7 @@ namespace Inventory_System
             set
             {
                 _exp = value;
-                Console.WriteLine(_name + " gamined experience and now has " + _exp);
+                Console.WriteLine(_name + " gained experience and now has " + _exp);
                 if(_level <= _requiredExp.Length)
                 {
                     if (_exp >= _requiredExp[_level - 1])
@@ -75,6 +76,10 @@ namespace Inventory_System
                     }
                 }
             }
+        }
+        public int GetLevel()
+        {
+            return _level;
         }
         public override void Fight(Creature target)
         {
@@ -112,6 +117,20 @@ namespace Inventory_System
                     Fight(targets[choice]);
                 }
             }
+        }
+        public override void CharacterSave(StreamWriter writer)
+        {
+            //Writes in same way as console
+            writer.WriteLine(GetName());
+            writer.WriteLine(GetLevel());
+            writer.WriteLine(Experience);
+        }
+        public override void CharacterLoad(StreamReader reader)
+        {
+            //Reads in same way as console
+            _name = reader.ReadLine();
+            _level = Convert.ToInt32(reader.ReadLine());
+            _exp = Convert.ToInt32(reader.ReadLine());
         }
     }
 }

@@ -12,6 +12,45 @@ namespace Inventory_System
         static void Main(string[] args)
         {
 
+            Monster monster1 = new Monster("Carbuncle", 30, 10, 50);
+            Console.WriteLine("Health: " + monster1.Health);
+
+            Spellbook spellbook = new Spellbook(2);
+
+            spellbook.Page1(monster1);
+            Console.WriteLine("Health: " + monster1.Health);
+            spellbook.Page2(monster1);
+            Console.WriteLine("Health: " + monster1.Health);
+
+            void Flame(Creature target)
+            {
+                target.Health -= 15;
+                Console.WriteLine("Flame deals 15 damage to " + target.GetName());
+            }
+            spellbook.Page1 = Flame;
+            spellbook.Page1(monster1);
+            Console.WriteLine("Health: " + monster1.Health);
+            void Cure(Creature target)
+            {
+                target.Health += 10;
+                Console.WriteLine("Cure heals 10 damage to " + target.GetName());
+            }
+            spellbook.Page2 = Cure;
+            spellbook.Page2(monster1);
+            Console.WriteLine("Health: " + monster1.Health);
+
+            spellbook.Page1 += Spellbook.Cure;
+            spellbook.Page1(monster1);
+            Console.WriteLine("Health: " + monster1.Health);
+
+            spellbook.book[0] = Flame;
+            spellbook.book[1] = Spellbook.Cure;
+            spellbook.book[0](monster1);
+            Console.WriteLine("Health: " + monster1.Health);
+
+            Console.ReadKey();
+
+            return;
             //Character test = new Character("Test");
             //Console.WriteLine(test.GetDamage());
 
@@ -89,7 +128,7 @@ namespace Inventory_System
             */
 
             //Creates Monsters
-            Monster monster1 = new Monster("Carbuncle", 30, 10, 50);
+            //Monster monster1 = new Monster("Carbuncle", 30, 10, 50);
             Monster monster2 = new Monster("Slime", 15, 5, 50);
 
             //Arrays Monsters
